@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+    nginx:
+        container_name: nginx_c
+        build:          ./requirements/nginx/
+        image:          nginx:inception
+        env_file:       .env
+        networks:
+            - inception
+        ports:
+            - "443:443"
+        restart:        always
+        volumes:
+            - /home/SCRIPT_TO_CHANGE_ME/data/web:/var/www/html/
+        depends_on:
+            - wordpress
+    
+    mariadb:
+        container_name: mariadb_c
+        build:          ./requirements/mariadb/
+        image:          mariadb:inception
+        env_file:       .env
+        networks:
+            - inception
+        restart:        always
+        volumes:
+            - /home/SCRIPT_TO_CHANGE_ME/data/database:/var/lib/mysql/
+    
+    wordpress:
+        container_name: wordpress_c
+        build:          ./requirements/wordpress/
+        image:          wordpress:inception
+        env_file:       .env
+        networks:
+            - inception
+        restart:        always
+        volumes:
+            - /home/SCRIPT_TO_CHANGE_ME/data/web:/var/www/html/
+        depends_on:
+            - mariadb
+
+networks:
+    inception:
+        name:   inception
