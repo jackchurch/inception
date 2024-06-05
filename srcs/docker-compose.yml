@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
     nginx:
-        container_name: nginx_c
+        container_name: nginx
         build:          ./requirements/nginx/
         image:          nginx:inception
         env_file:       .env
@@ -17,7 +17,7 @@ services:
             - wordpress
     
     mariadb:
-        container_name: mariadb_c
+        container_name: mariadb
         build:          ./requirements/mariadb/
         image:          mariadb:inception
         env_file:       .env
@@ -28,7 +28,7 @@ services:
             - /home/SCRIPT_TO_CHANGE_ME/data/database:/var/lib/mysql/
     
     wordpress:
-        container_name: wordpress_c
+        container_name: wordpress
         build:          ./requirements/wordpress/
         image:          wordpress:inception
         env_file:       .env

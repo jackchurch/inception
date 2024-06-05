@@ -17,6 +17,6 @@ fclean: clean
 	@sudo docker system prune -f -a --volumes
 	@bash srcs/requirements/tools/remove_dir.sh
 
-re: fclean build
+re: clean all
 
 .PHONY: all clean fclean re build
