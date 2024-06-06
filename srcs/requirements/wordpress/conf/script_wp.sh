@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# while ! mariadb -h${DB_HOST} -u${WP_DB_USER} -p${WP_DB_PASSWORD} ${WP_DB_NAME} &>/dev/null;
-# do
-#     sleep 3
-# done
-
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 
