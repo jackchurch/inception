@@ -12,7 +12,7 @@ services:
             - "443:443"
         restart:        always
         volumes:
-            - /home/SCRIPT_TO_CHANGE_ME/data/web:/var/www/html/
+            - web_v:/var/www/html/
         depends_on:
             - wordpress
     
@@ -25,7 +25,7 @@ services:
             - inception
         restart:        always
         volumes:
-            - /home/SCRIPT_TO_CHANGE_ME/data/database:/var/lib/mysql/
+            - database_v:/var/lib/mysql/
     
     wordpress:
         container_name: wordpress
@@ -36,10 +36,22 @@ services:
             - inception
         restart:        always
         volumes:
-            - /home/SCRIPT_TO_CHANGE_ME/data/web:/var/www/html/
+            - web_v:/var/www/html/
         depends_on:
             - mariadb
 
 networks:
     inception:
         name:   inception
+
+volumes:
+    database_v:
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/SCRIPT_TO_CHANGE_ME/data/database
+    web_v:
+        driver_opts:
+            type: none # Custom type: not tmpfs or nfs,see next option `o`
+            o: bind # What type to use, a dir from the host. 
+            device: /home/SCRIPT_TO_CHANGE_ME/data/web

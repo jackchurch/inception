@@ -13,7 +13,7 @@ clean:
 	@sudo docker compose -f ./srcs/docker-compose.yml  down
 
 fclean: clean
-	@sudo docker volume rm srcs_mariadb-data srcs_wordpress-data || true
+	@sudo docker volume rm srcs_web_v srcs_database_v  || true
 	@sudo docker system prune -f -a --volumes
 	@bash srcs/requirements/tools/remove_dir.sh
 
