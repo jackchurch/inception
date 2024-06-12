@@ -9,9 +9,9 @@ RUN apk add php81-phar php81-posix php81-session mariadb-client
 RUN apk add php81-simplexml php81-sqlite3 php81-tokenizer php81-xml
 RUN apk add php81-xmlreader php81-xmlwriter php81-zip php81-zlib
 
-COPY ./conf/script_wp.sh .
-RUN chmod +x script_wp.sh
+COPY ./conf/script_wp.sh /var/www/html/wordpress/.
+RUN chmod +x /var/www/html/wordpress/script_wp.sh
 
 WORKDIR /var/www/html/wordpress
 
-CMD [ "/script_wp.sh" ]
+CMD [ "/var/www/html/wordpress/script_wp.sh" ]

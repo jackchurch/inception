@@ -12,3 +12,4 @@ sed -i 's/listen = 127.0.0.1:9000/listen = 9000/g' /etc/php81/php-fpm.d/www.conf
 ./wp-cli.phar user create $WP_USER ${EMAIL1} --user_pass=${WP_USER_PASSWORD} --role=contributor --display_name=${WP_USER} --porcelain --path=${WP_PATH} --allow-root
 
 exec /usr/sbin/php-fpm81 -F -R
+

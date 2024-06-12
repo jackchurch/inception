@@ -8,3 +8,6 @@ sed -i "s|${USER}|SCRIPT_TO_CHANGE_ME|g" srcs/requirements/nginx/conf/nginx.conf
 
 # Reset username for domain in .env file"
 sed -i "s|${USER}|SCRIPT_TO_CHANGE_ME|g" srcs/.env
+
+# Reset username for SSH key in nginx/Dockerfile"
+sed -i "s|${USER}|SCRIPT_TO_CHANGE_ME|g" srcs/requirements/nginx/Dockerfile

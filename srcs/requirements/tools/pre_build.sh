@@ -20,9 +20,13 @@ then
     # Update username in nginx config for the domain "username.42.fr"
     sed -i "s|SCRIPT_TO_CHANGE_ME|${USER}|g" srcs/requirements/nginx/conf/nginx.conf
 
+    # Update username for SSH key in nginx/Dockerfile"
+    sed -i "s|SCRIPT_TO_CHANGE_ME|${USER}|g" srcs/requirements/nginx/Dockerfile
 
     # Update username for domain in .env file"
     sed -i "s|SCRIPT_TO_CHANGE_ME|${USER}|g" srcs/.env
+
+
 else
     echo 
     echo
